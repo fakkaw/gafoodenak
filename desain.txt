@@ -1,0 +1,100 @@
+### **Desain Konseptual Aplikasi Gafood**
+
+**1. Nama Aplikasi:** Gafood
+
+**2. Konsep Aplikasi:**
+Aplikasi mobile sederhana untuk memesan makanan secara online. Pengguna (pelanggan) dapat langsung memesan setelah mengisi data diri tanpa perlu membuat akun/password, sementara Admin memiliki halaman login khusus untuk mengelola seluruh aspek aplikasi.
+
+**3. Peran Pengguna (User Roles):**
+*   **Pelanggan:** Siapa saja yang ingin memesan makanan. Tidak perlu login.
+*   **Admin:** Pemilik atau pengelola aplikasi. Memerlukan login untuk mengakses dashboard pengelolaan.
+
+---
+
+### **Alur Aplikasi untuk Pelanggan**
+
+**Langkah 1: Pengisian Data Diri (Pengganti Registrasi)**
+*   Saat pertama kali membuka aplikasi, pelanggan akan disambut dengan halaman selamat datang.
+*   Untuk melanjutkan, pelanggan harus menekan tombol "Mulai Memesan".
+*   Aplikasi akan menampilkan formulir "Data Diri" yang wajib diisi:
+    *   Nama Lengkap
+    *   Nomor Telepon (yang aktif, untuk konfirmasi)
+    *   Alamat Lengkap (termasuk detail seperti blok/nomor rumah)
+*   Data ini akan disimpan di perangkat pengguna untuk mempermudah pemesanan di kemudian hari.
+
+**Langkah 2: Halaman Utama (Menu Makanan)**
+*   Setelah data diri tersimpan, pelanggan langsung masuk ke halaman utama.
+*   Tampilan berisi daftar menu makanan yang tersedia, dikelompokkan berdasarkan kategori (misal: Makanan Berat, Minuman, Cemilan).
+*   Setiap item menu menampilkan:
+    *   Foto Makanan
+    *   Nama Makanan
+    *   Harga
+    *   Tombol "Pesan" atau ikon keranjang (+).
+
+**Langkah 3: Proses Pemesanan & Keranjang**
+*   Saat pelanggan menekan "Pesan", item akan ditambahkan ke keranjang belanja.
+*   Pelanggan dapat melihat ringkasan pesanan di halaman "Keranjang Saya":
+    *   Daftar item yang dipesan dan jumlahnya.
+    *   Subtotal harga makanan.
+    *   Biaya pengiriman (jika ada).
+    *   Total yang harus dibayar.
+*   Di halaman ini, pelanggan menekan tombol "Lanjut ke Pembayaran".
+
+**Langkah 4: Metode Pembayaran**
+*   Pelanggan memilih metode pembayaran yang diinginkan:
+    *   **COD (Cash on Delivery):** Bayar di tempat saat makanan tiba.
+    *   **Transfer Bank:** Menampilkan nomor rekening tujuan.
+    *   **E-Wallet (GoPay, OVO, Dana):** Menggunakan QRIS atau integrasi lainnya.
+*   Setelah memilih, pelanggan menekan tombol "Konfirmasi Pesanan".
+
+**Langkah 5: Pelacakan Pesanan (Order Tracking)**
+*   Setelah konfirmasi, pelanggan diarahkan ke halaman pelacakan pesanan.
+*   Halaman ini menampilkan status pesanan secara real-time, yang diperbarui oleh Admin:
+    *   **Status 1: Pesanan Diterima:** "Kami telah menerima pesananmu."
+    *   **Status 2: Sedang Disiapkan:** "Pesananmu sedang disiapkan oleh koki terbaik kami."
+    *   **Status 3: Dalam Perjalanan:** "Kurir sedang menuju lokasimu. Hati-hati di jalan!"
+    *   **Status 4: Tiba di Tujuan:** "Pesananmu telah sampai. Selamat menikmati!"
+*   Bisa ditambahkan visual sederhana seperti peta atau ikon yang bergerak sesuai status.
+
+**Langkah 6: Notifikasi Pesanan Tiba**
+*   Ketika status diubah menjadi "Tiba di Tujuan" oleh Admin, aplikasi akan mengirimkan notifikasi push ke perangkat pelanggan dengan pesan: "Pesananmu sudah sampai! Jangan lupa berikan rating ya."
+
+---
+
+### **Alur Aplikasi untuk Admin**
+
+**Langkah 1: Halaman Login Khusus Admin**
+*   Admin mengakses halaman login melalui URL/halaman tersembunyi (misal: `domain.com/admin` atau tombol rahasia di aplikasi).
+*   Formulir login sederhana:
+    *   Username
+    *   Password
+
+**Langkah 2: Dashboard Admin**
+*   Setelah login berhasil, Admin masuk ke halaman dashboard utama yang berisi ringkasan bisnis:
+    *   Jumlah pesanan hari ini.
+    *   Total pemasukan hari ini/bulan ini.
+    *   Daftar pesanan yang sedang aktif (belum selesai).
+
+**Langkah 3: Manajemen Menu**
+*   Admin memiliki menu khusus untuk "Kelola Menu".
+*   Di sini, Admin bisa melakukan **CRUD (Create, Read, Update, Delete)** untuk item makanan:
+    *   **Menambah:** Mengisi form nama makanan, harga, deskripsi, dan upload foto.
+    *   **Mengedit:** Mengubah detail makanan yang sudah ada.
+    *   **Menghapus:** Menghilangkan item dari menu.
+    *   **Mengubah Status:** Menandai item sebagai "Tersedia" atau "Habis".
+
+**Langkah 4: Manajemen Pesanan & Pelanggan**
+*   Admin dapat melihat semua pesanan yang masuk (baru maupun lama).
+*   Setiap entri pesanan menampilkan:
+    *   Nama, alamat, dan nomor telepon pelanggan.
+    *   Detail pesanan (item, jumlah, total harga).
+    *   Status pesanan saat ini.
+*   Di halaman inilah Admin **memperbarui status pesanan** (Diterima -> Disiapkan -> Diantar -> Tiba), yang akan langsung terlihat di aplikasi pelanggan.
+
+**Langkah 5: Laporan Pemasukan**
+*   Menu khusus untuk melihat laporan keuangan.
+*   Admin dapat memfilter pemasukan berdasarkan periode:
+    *   Harian
+    *   Mingguan
+    *   Bulanan
+*   Data disajikan dalam bentuk angka dan grafik sederhana untuk mempermudah pemantauan.
