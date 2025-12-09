@@ -5,7 +5,7 @@
 $db_host = 'localhost';
 $db_user = 'root'; // User default XAMPP
 $db_pass = ''; // Password default XAMPP kosong
-$db_name = 'gafood';
+$db_name = 'psas_db';
 
 // Membuat Koneksi
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
